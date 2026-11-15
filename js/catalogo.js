@@ -1,0 +1,86 @@
+// Base de conhecimento em português: explica em linguagem simples cada família de IA gratuita da NVIDIA.
+export const FAMILIAS = [
+  { id: 'nemotron', nome: 'Nemotron', re: /nemotron|llama-3\.\d-nemotron|openreasoning|openmath|opencode|acereason|dory/i, cat: 'Texto e raciocínio', ic: '🧠',
+    oque: 'Família de modelos de linguagem (como o ChatGPT) treinados e liberados pela NVIDIA, de tamanhos pequenos (rodam no PC) até gigantes.',
+    praque: 'Conversar, resumir, escrever código, raciocinar passo a passo e criar agentes de IA.',
+    como: 'Baixe grátis no Hugging Face e rode com Ollama/vLLM/Transformers, ou teste direto no navegador em build.nvidia.com.' },
+  { id: 'cosmos', nome: 'Cosmos', re: /cosmos/i, cat: 'Mundo físico e vídeo', ic: '🌍',
+    oque: '"Modelos de mundo": IAs que entendem e geram vídeos do mundo físico (ruas, fábricas, robôs).',
+    praque: 'Treinar robôs e carros autônomos com vídeos sintéticos, prever o que acontece numa cena, gerar vídeo realista.',
+    como: 'Pesos abertos no Hugging Face e código no GitHub (nvidia-cosmos). Precisa de GPU forte; dá para testar em build.nvidia.com.' },
+  { id: 'parakeet', nome: 'Parakeet', re: /parakeet/i, cat: 'Voz → texto', ic: '🎙️',
+    oque: 'Modelos de reconhecimento de fala (transcrição) muito rápidos e precisos.',
+    praque: 'Transformar áudio e vídeo em texto, legendas automáticas, atas de reunião.',
+    como: 'Baixe no Hugging Face e rode com o NeMo (Python). Alguns têm versão multilíngue com português.' },
+  { id: 'canary', nome: 'Canary', re: /canary/i, cat: 'Voz → texto e tradução', ic: '🐤',
+    oque: 'Modelos que transcrevem e também traduzem fala entre idiomas.',
+    praque: 'Legendar e traduzir vídeos, atendimento multilíngue.',
+    como: 'Hugging Face + NeMo. Teste online em demos do Hugging Face Spaces.' },
+  { id: 'tts', nome: 'Magpie / FastPitch / voz sintética', re: /magpie|fastpitch|hifigan|tts|radtts|audio2face|a2f/i, cat: 'Texto → voz e avatar', ic: '🔊',
+    oque: 'Modelos que geram voz a partir de texto e animam rostos 3D a partir do áudio (Audio2Face).',
+    praque: 'Narrar textos, criar assistentes falantes e personagens digitais.',
+    como: 'Pesos no Hugging Face; alguns disponíveis como API de teste em build.nvidia.com.' },
+  { id: 'bio', nome: 'BioNeMo e biologia', re: /bionemo|proteina|esm|evo2|genmol|molmim|diffdock|boltz|biology|protein|rfd/i, cat: 'Saúde e ciência', ic: '🧬',
+    oque: 'IAs para biologia: desenhar proteínas, prever estruturas e gerar moléculas para remédios.',
+    praque: 'Pesquisa de novos medicamentos e biotecnologia.',
+    como: 'Pesos abertos no Hugging Face e APIs de teste em build.nvidia.com (categoria Biology).' },
+  { id: 'gr00t', nome: 'Isaac GR00T e robótica', re: /gr00t|groot|isaac|robot|eagle|nvila|vila/i, cat: 'Robôs e visão', ic: '🤖',
+    oque: 'Modelos que veem imagens e controlam robôs (incluindo humanoides). Inclui a família de visão "Eagle".',
+    praque: 'Ensinar robôs a pegar objetos, andar e seguir instruções; descrever imagens e vídeos.',
+    como: 'Código no GitHub (NVIDIA/Isaac-GR00T) e pesos no Hugging Face; simulação grátis no Isaac Sim.' },
+  { id: 'rag', nome: 'Embeddings e busca (RAG)', re: /embed|retriever|rerank|nv-embed|llama-nemoretriever|nemoretriever|colembed/i, cat: 'Busca inteligente', ic: '🔎',
+    oque: 'Modelos que transformam textos em números para achar informações parecidas (base dos chatbots com documentos).',
+    praque: 'Criar um "ChatGPT dos seus PDFs", busca semântica, recomendação.',
+    como: 'Hugging Face (sentence-transformers) ou API gratuita de teste em build.nvidia.com.' },
+  { id: 'guard', nome: 'Segurança de IA (Guard)', re: /guard|safety|aegis|content-safety|jailbreak/i, cat: 'Segurança', ic: '🛡️',
+    oque: 'Modelos que vigiam o que entra e sai de um chatbot, bloqueando conteúdo perigoso ou ataques.',
+    praque: 'Deixar assistentes de IA mais seguros e confiáveis.',
+    como: 'Pesos no Hugging Face e o framework NeMo Guardrails (GitHub).' },
+  { id: 'ocr', nome: 'Leitura de documentos (OCR/Parse)', re: /parse|ocr|nougat|table|chart|page-elements|graphic-elements/i, cat: 'Documentos', ic: '📄',
+    oque: 'IAs que leem PDFs, tabelas e imagens de documentos e extraem o texto organizado.',
+    praque: 'Digitalizar documentos, extrair dados de notas e relatórios.',
+    como: 'Hugging Face e o projeto nv-ingest no GitHub.' },
+  { id: 'clima', nome: 'Earth-2 e física', re: /earth|fourcastnet|corrdiff|stormcast|climate|weather|physicsnemo|modulus/i, cat: 'Clima e física', ic: '🌦️',
+    oque: 'Modelos que simulam clima, tempo e fenômenos físicos muito mais rápido que métodos tradicionais.',
+    praque: 'Previsão do tempo, estudos de clima e engenharia.',
+    como: 'Código aberto PhysicsNeMo e Earth2Studio no GitHub; pesos no Hugging Face.' },
+  { id: 'img', nome: 'Imagem e 3D', re: /sana|edify|diffusion|3d|gen3c|nerf|instant|lyra|chrono|image/i, cat: 'Imagem e 3D', ic: '🎨',
+    oque: 'Modelos que geram ou editam imagens e cenas 3D.',
+    praque: 'Arte, design, jogos e mundos virtuais.',
+    como: 'Hugging Face e repositórios do NVlabs no GitHub.' },
+  { id: 'quant', nome: 'Versões otimizadas (FP8/FP4)', re: /fp8|fp4|nvfp4|mxfp|int4|awq|quant|gguf|onnx|tensorrt/i, cat: 'Otimização', ic: '⚡',
+    oque: 'Versões "compactadas" de modelos famosos, otimizadas pela NVIDIA para rodar mais rápido e gastar menos memória.',
+    praque: 'Rodar IAs grandes em placas de vídeo menores ou servir mais usuários.',
+    como: 'Baixe no Hugging Face e rode com TensorRT-LLM, vLLM ou SGLang.' }
+];
+export const OUTROS = { id: 'outros', nome: 'Outros modelos', cat: 'Diversos', ic: '✨', oque: 'Modelo aberto publicado pela NVIDIA.', praque: 'Veja a descrição na página do modelo.', como: 'Abra no Hugging Face para ver licença e instruções.' };
+export function familiaDe(id, tags = []) {
+  const s = id + ' ' + tags.join(' ');
+  return FAMILIAS.find(f => f.re.test(s)) || OUTROS;
+}
+// Recursos gratuitos fixos (verificados manualmente; links oficiais)
+export const RECURSOS = [
+  { nome: 'API Catalog / NIM (build.nvidia.com)', tipo: 'APIs de IA', ic: '🚀', url: 'https://build.nvidia.com/explore/discover', gratis: 'Teste grátis no navegador e créditos/limite gratuito para desenvolvedores (regras definidas pela NVIDIA).', oque: 'Vitrine com dezenas de modelos (da NVIDIA e de parceiros) prontos para usar por API compatível com OpenAI.', praque: 'Colocar IA em apps e sites sem ter GPU própria.' },
+  { nome: 'NVIDIA Developer Program', tipo: 'Conta grátis', ic: '🪪', url: 'https://developer.nvidia.com/developer-program', gratis: 'Cadastro gratuito.', oque: 'Conta de desenvolvedor que libera downloads, SDKs, fóruns e alguns cursos gratuitos.', praque: 'Porta de entrada para quase tudo que a NVIDIA oferece.' },
+  { nome: 'Cursos DLI autoguiados', tipo: 'Cursos', ic: '🎓', url: 'https://www.nvidia.com/en-us/training/self-paced-courses/', gratis: 'Vários cursos com preço "Free" (filtre por gratuito no catálogo).', oque: 'Deep Learning Institute: cursos online sobre IA generativa, RAG, CUDA, robótica e mais.', praque: 'Aprender IA com material oficial e, em alguns, ganhar certificado.' },
+  { nome: 'NGC Catalog', tipo: 'Contêineres e modelos', ic: '📦', url: 'https://catalog.ngc.nvidia.com/', gratis: 'Download gratuito com conta.', oque: 'Biblioteca de contêineres, modelos pré-treinados e notebooks otimizados para GPU.', praque: 'Montar ambientes de IA prontos em minutos.' },
+  { nome: 'NVIDIA no Hugging Face', tipo: 'Modelos abertos', ic: '🤗', url: 'https://huggingface.co/nvidia', gratis: 'Pesos abertos (confira a licença de cada modelo).', oque: 'Centenas de modelos abertos: Nemotron, Cosmos, Parakeet, Canary e muito mais.', praque: 'Baixar e rodar IA no seu próprio computador ou servidor.' },
+  { nome: 'NVIDIA no GitHub', tipo: 'Código aberto', ic: '🐙', url: 'https://github.com/NVIDIA', gratis: 'Código aberto (Apache, MIT, BSD etc.).', oque: 'Centenas de projetos: TensorRT-LLM, NeMo, Megatron, cuOpt, Warp, garak…', praque: 'Construir, treinar e acelerar IA com as mesmas ferramentas da NVIDIA.' },
+  { nome: 'NeMo Framework', tipo: 'Framework', ic: '🧩', url: 'https://github.com/NVIDIA-NeMo', gratis: 'Código aberto (Apache-2.0).', oque: 'Kit para treinar e personalizar modelos de linguagem, fala e multimodais.', praque: 'Criar sua própria IA ou adaptar uma existente aos seus dados.' },
+  { nome: 'NVIDIA AI Blueprints', tipo: 'Receitas prontas', ic: '🗺️', url: 'https://build.nvidia.com/blueprints', gratis: 'Código de referência aberto.', oque: 'Exemplos completos de apps de IA (assistente de vídeo, RAG, atendimento digital…).', praque: 'Partir de um projeto pronto em vez de começar do zero.' },
+  { nome: 'CUDA Toolkit', tipo: 'SDK', ic: '⚙️', url: 'https://developer.nvidia.com/cuda-downloads', gratis: 'Download gratuito.', oque: 'Base de programação das GPUs NVIDIA.', praque: 'Acelerar cálculos e IA na placa de vídeo.' },
+  { nome: 'Isaac Sim', tipo: 'Simulação de robôs', ic: '🦾', url: 'https://developer.nvidia.com/isaac/sim', gratis: 'Uso gratuito para indivíduos (ver termos).', oque: 'Simulador 3D realista para treinar e testar robôs.', praque: 'Ensinar robôs sem quebrar nada no mundo real.' },
+  { nome: 'NVIDIA Broadcast', tipo: 'App gratuito', ic: '🎧', url: 'https://www.nvidia.com/pt-br/geforce/broadcasting/broadcast-app/', gratis: 'Grátis para placas RTX.', oque: 'IA que remove ruído do microfone, desfoca fundo e enquadra a câmera.', praque: 'Lives, reuniões e gravações com som e imagem limpos.' },
+  { nome: 'NVIDIA AI Workbench', tipo: 'Ferramenta', ic: '🧪', url: 'https://www.nvidia.com/en-us/deep-learning-ai/solutions/data-science/workbench/', gratis: 'Download gratuito.', oque: 'Ambiente para criar e levar projetos de IA do PC para a nuvem.', praque: 'Organizar experimentos de IA com GPU local.' }
+];
+export const CANAIS_TV = [
+  { nome: 'DW News', id: 'UCknLrEdhRCp1aegoMqRaCZg', tema: 'Mundo' },
+  { nome: 'Al Jazeera English', id: 'UCNye-wNBqNL5ZzHSJj3l8Bg', tema: 'Mundo' },
+  { nome: 'Sky News', id: 'UCoMdktPbSTixAyNGwb-UYkQ', tema: 'Mundo' },
+  { nome: 'euronews', id: 'UCSrZ3UV4jOidv8ppoVuvW9Q', tema: 'Mundo' },
+  { nome: 'ABC News', id: 'UCBi2mrWuNuyYy4gbM6fU18Q', tema: 'EUA' },
+  { nome: 'CNN Brasil', id: 'UCvdwhh_fDyWccR42-rReZLw', tema: 'Brasil' },
+  { nome: 'Bloomberg TV', id: 'UCIALMKvObZNtJ6AmdCLP7Lg', tema: 'Mercados' },
+  { nome: 'CNBC', id: 'UCvJJ_dzjViJCoLf5uKUTwoA', tema: 'Mercados' },
+  { nome: 'NASA', id: 'UCLA_DiR1FfKNvjuUpBHmylQ', tema: 'Espaço e Sol' }
+];

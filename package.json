@@ -1,0 +1,15 @@
+{
+  "name": "radar-aguia-solar",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Radar Águia Solar — coletor de dados (GitHub Actions) para o site estático.",
+  "type": "module",
+  "scripts": {
+    "dados": "node scripts/fetch-data.mjs",
+    "teste": "node scripts/test-engine.mjs"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "fast-xml-parser": "^5.12.1"
+  }
+}

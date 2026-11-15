@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'sha256-3pRED1tOXas1FXFoPb9TGCjmYe9XQsmO9OV23khV2nY='; img-src 'self' data: https://i.ytimg.com; font-src 'self'; connect-src 'self' https://huggingface.co https://api.github.com https://api.coingecko.com https://economia.awesomeapi.com.br https://api.bcb.gov.br; frame-src https://www.youtube-nocookie.com; worker-src 'self'; manifest-src 'self'; media-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Radar Águia Solar · IA gratuita da NVIDIA, cenário mundial e simulador</title>
+<meta name="description" content="Radar Águia Solar: o olhar da Águia Primordial sobre as IAs gratuitas da NVIDIA em tempo real, o cenário mundial e um simulador de investimentos com dinheiro fictício.">
+<meta name="theme-color" content="#07050d">
+<meta name="color-scheme" content="dark">
+<meta property="og:title" content="Radar Águia Solar">
+<meta property="og:description" content="IAs gratuitas da NVIDIA em tempo real, TV de notícias do mundo e simulador de investimentos (dinheiro fictício).">
+<meta property="og:image" content="img/og.jpg">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Águia Solar">
+<link rel="icon" href="icons/favicon-64.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preload" href="img/hero-m.webp" as="image" media="(max-width: 760px)">
+<link rel="preload" href="img/hero.webp" as="image" media="(min-width: 761px)">
+<link rel="stylesheet" href="css/app.css">
+<link rel="modulepreload" href="vendor/purify.es.mjs" integrity="sha384-5vWn8nV9QI3YB+BIUfZOpAnCANDlFNyrOaRGLEUReZV5siTYwY7yoiIGKtoLnqpj">
+<link rel="modulepreload" href="vendor/fuse.min.mjs" integrity="sha384-q0aLEO7RBzlrypvGA6+2CLbdnwCONRgCmmkPYWRTu5isFkLs7tLZshJIZhY5b1Rk">
+<link rel="modulepreload" href="vendor/lightweight-charts.mjs" integrity="sha384-dGaKkYhTZwwBEbLHHV9WqezZktNiaqStktx7XaCcykpT3pNsVp6XD0XdqKci8apk">
+<script type="module" src="js/app.js"></script>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<canvas id="fundo" aria-hidden="true"></canvas>
+
+<header class="topo">
+  <a class="marca" href="#inicio" aria-label="Radar Águia Solar, início">
+    <img src="img/logo-96.webp" alt="" width="38" height="38">
+    <span><b>RADAR</b> ÁGUIA SOLAR<small>Primordial · v1</small></span>
+  </a>
+  <nav class="nav-topo" aria-label="Menu principal">
+    <a href="#inicio">Início</a><a href="#nvidia">IA NVIDIA</a><a href="#mundo">Cenário Mundial</a><a href="#simulador">Simulador</a><a href="#curto">Curto prazo</a><a href="#riqueza">Riqueza</a><a href="#mente">Mente</a><a href="#fraude">Golpes</a><a href="#plataformas">Onde investir</a><a href="#seguranca">Segurança</a><a href="#riscos" class="lk-risco">⚠ Avisos e Riscos</a>
+  </nav>
+  <div class="vivo" id="vivo" title="Estado dos dados"><i></i><span>conectando…</span></div>
+</header>
+
+<div class="faixa-ticker" aria-label="Cotações (atrasadas)"><div class="ticker" id="ticker"></div></div>
+
+<main id="conteudo">
+
+<!-- ============ INÍCIO ============ -->
+<section class="pagina" data-pagina="inicio" aria-labelledby="t-inicio">
+  <div class="hero">
+    <picture>
+      <source media="(max-width: 760px)" srcset="img/hero-m.webp">
+      <img src="img/hero.webp" alt="Águia dourada de circuitos com asas abertas diante de um sol radiante feito de anéis de radar" width="1280" height="720" fetchpriority="high">
+    </picture>
+    <div class="hero-txt">
+      <p class="sobre">O OLHAR DA ÁGUIA PRIMORDIAL · DADOS AO VIVO</p>
+      <h1 id="t-inicio">Radar <span class="ouro">Águia Solar</span></h1>
+      <p class="lead">A águia enxerga de longe e o sol ilumina o que estava escondido. Aqui você vê, em tempo real, toda IA <b>gratuita</b> que a NVIDIA libera, o cenário do mundo como numa TV e um <b>simulador de investimentos com dinheiro fictício</b>.</p>
+      <div class="cta"><a class="btn ouro-btn" href="#nvidia">Ver IAs gratuitas</a><a class="btn" href="#simulador">Abrir simulador</a></div>
+    </div>
+  </div>
+  <div class="grade-num" id="contadores"></div>
+  <div class="duas">
+    <article class="vidro"><h2 class="tit">☀ Últimas liberações da NVIDIA</h2><ul class="lista-mini" id="ini-nv"></ul><a class="mais" href="#nvidia">Ver catálogo completo →</a></article>
+    <article class="vidro"><h2 class="tit">🦅 Termômetro do mundo</h2><div id="ini-term" class="termos"></div><a class="mais" href="#mundo">Abrir Cenário Mundial →</a></article>
+  </div>
+  <article class="vidro"><h2 class="tit">📈 Mercado agora <span class="etq">atrasado · educativo</span></h2><div class="mini-mercado" id="ini-mercado"></div></article>
+</section>
+
+<!-- ============ NVIDIA ============ -->
+<section class="pagina" data-pagina="nvidia" aria-labelledby="t-nv" hidden>
+  <div class="cab-pag"><p class="sobre">NÚCLEO · ATUALIZA SOZINHO</p><h1 id="t-nv">IA Gratuita da <span class="verde">NVIDIA</span></h1>
+  <p class="lead">Modelos abertos, APIs com uso gratuito, código aberto, cursos e anúncios. Tudo explicado em linguagem simples: <b>o que é, para que serve e como usar de graça</b>.</p></div>
+  <div class="grade-num" id="nv-contadores"></div>
+  <div class="abas" role="tablist" id="nv-abas">
+    <button role="tab" data-aba="destaques" aria-selected="true">Destaques</button>
+    <button role="tab" data-aba="modelos">Modelos abertos</button>
+    <button role="tab" data-aba="nim">APIs NIM</button>
+    <button role="tab" data-aba="codigo">Código aberto</button>
+    <button role="tab" data-aba="lancamentos">Lançamentos</button>
+    <button role="tab" data-aba="noticias">Blog e notícias</button>
+  </div>
+  <div class="filtros" id="nv-filtros">
+    <input type="search" id="nv-busca" placeholder="Buscar (ex.: voz, português, robô, Nemotron)…" aria-label="Buscar no catálogo NVIDIA" autocomplete="off">
+    <select id="nv-familia" aria-label="Filtrar por família"><option value="">Todas as famílias</option></select>
+    <select id="nv-ordem" aria-label="Ordenar"><option value="mod">Mais recentes</option><option value="dl">Mais baixados</option><option value="lk">Mais curtidos</option></select>
+    <label class="chk"><input type="checkbox" id="nv-novos"> Só novidades</label>
+  </div>
+  <div id="nv-lista" class="cartoes"></div>
+  <button class="btn mais-btn" id="nv-mais" hidden>Carregar mais</button>
+</section>
+
+<!-- ============ MUNDO ============ -->
+<section class="pagina" data-pagina="mundo" aria-labelledby="t-mundo" hidden>
+  <div class="cab-pag"><p class="sobre">TV DO CENÁRIO MUNDIAL</p><h1 id="t-mundo">Cenário <span class="ouro">Mundial</span></h1>
+  <p class="lead">Manchetes de dezenas de fontes, termômetro de humor das notícias e o que está subindo ou caindo nos mercados.</p></div>
+  <article class="vidro"><h2 class="tit">📺 TV ao vivo <span class="etq">canais oficiais no YouTube</span></h2>
+    <div class="tv" id="tv"><div class="tv-tela" id="tv-tela"><p>Escolha um canal. O vídeo só carrega quando você toca (economiza dados e protege sua privacidade).</p></div><div class="tv-canais" id="tv-canais"></div></div>
+  </article>
+  <article class="vidro"><h2 class="tit">🌡 Termômetro das notícias</h2><div class="termos grande" id="mu-term"></div>
+    <p class="nota">Calculado contando palavras positivas e negativas nas manchetes (ex.: "alta", "recorde" × "queda", "crise"). É um indicador simples, pode errar com ironia ou contexto.</p></article>
+  <article class="vidro"><h2 class="tit">📊 Subindo × caindo <span class="etq">em reais · atrasado</span></h2><div class="tabela-rol"><table class="tab" id="mu-tend"></table></div></article>
+  <div class="abas" role="tablist" id="mu-abas">
+    <button role="tab" data-cat="" aria-selected="true">Tudo</button><button role="tab" data-cat="mundo">Mundo</button><button role="tab" data-cat="economia">Economia</button><button role="tab" data-cat="mercados">Mercados</button><button role="tab" data-cat="cripto">Cripto</button><button role="tab" data-cat="tecnologia">Tecnologia</button>
+  </div>
+  <div class="filtros"><input type="search" id="mu-busca" placeholder="Buscar nas manchetes…" aria-label="Buscar nas manchetes" autocomplete="off"></div>
+  <div id="mu-lista" class="noticias"></div>
+</section>
+
+<!-- ============ SIMULADOR ============ -->
+<section class="pagina" data-pagina="simulador" aria-labelledby="t-sim" hidden>
+  <div class="banner-sim" role="note"><b>MODO SIMULAÇÃO — dinheiro fictício</b><span>Nada aqui movimenta dinheiro de verdade. Não é recomendação de investimento. Qualquer decisão é por sua conta e risco.</span></div>
+  <div class="cab-pag"><p class="sobre">PAPER TRADING · EDUCATIVO</p><h1 id="t-sim">Simulador da <span class="ouro">Águia</span></h1>
+  <div class="responsa" role="note"><b>Qualquer decisão de investimento é de total responsabilidade e por conta e risco de cada pessoa. O aplicativo e seus criadores não se responsabilizam por perdas.</b> Este app não recebe nem movimenta dinheiro.</div>
+  <p class="lead">Coloque um valor <b>fictício</b>. A Águia analisa ativos com dados reais (atrasados) usando indicadores transparentes e mostra como uma carteira teria se comportado. Serve para aprender e testar a lógica, não para prometer lucro.</p></div>
+  <div id="sim-bloqueio" class="vidro bloqueio" hidden><p>Para usar o simulador, leia e aceite os avisos de risco.</p><button class="btn ouro-btn" data-abrir-aviso id="sim-abrir-aviso">Ler avisos</button></div>
+  <div id="sim-corpo" hidden>
+    <form class="vidro form-sim" id="sim-form">
+      <label>Valor fictício (R$)<input type="number" id="sim-valor" min="100" max="100000000" step="100" value="10000" inputmode="decimal" required></label>
+      <label>Perfil de risco<select id="sim-perfil"><option value="conservador">Conservador</option><option value="moderado" selected>Moderado</option><option value="arrojado">Arrojado</option></select></label>
+      <label>Projeção<select id="sim-horiz"><option value="126">6 meses</option><option value="252" selected>1 ano</option><option value="504">2 anos</option></select></label>
+      <button class="btn ouro-btn" type="submit">Analisar (simulação)</button>
+    </form>
+    <div class="grade-num" id="sim-macro"></div>
+    <article class="vidro"><h2 class="tit">🧭 Carteira sugerida pela Águia <span class="selo-sim">SIMULAÇÃO · dinheiro fictício</span></h2>
+      <div class="aloc" id="sim-aloc"></div>
+      <p class="nota">Como a Águia decide: pontua cada ativo (momento, tendência das médias de 50/200 dias, Sharpe, RSI, pior queda e humor das notícias), dá mais peso a quem tem pontuação boa e menos volatilidade, respeita limites do perfil e deixa o resto no CDI. Não é recomendação de investimento.</p>
+      <div class="cta"><button class="btn ouro-btn" id="sim-aplicar">Aplicar na carteira fictícia</button></div>
+    </article>
+    <article class="vidro"><h2 class="tit">🔬 Raio-X dos ativos <span class="selo-sim">SIMULAÇÃO</span></h2><div class="tabela-rol"><table class="tab" id="sim-tab"></table></div></article>
+    <article class="vidro"><h2 class="tit">⏪ Teste no passado (backtest) <span class="selo-sim">SIMULAÇÃO</span></h2>
+      <p class="nota">A Águia refaz as escolhas mês a mês usando só os dados que existiam em cada data, e compara com CDI, Ibovespa e Bitcoin. Resultados passados não garantem resultados futuros.</p>
+      <div class="grafico" id="g-back"></div><div class="legenda" id="leg-back"></div><div class="grade-num" id="sim-back"></div></article>
+    <article class="vidro"><h2 class="tit">🎲 Projeção de cenários (Monte Carlo) <span class="selo-sim">SIMULAÇÃO</span></h2>
+      <p class="nota">2.000 futuros possíveis sorteados a partir dos movimentos passados. A faixa mostra do cenário ruim (5%) ao bom (95%). Não é previsão: o futuro pode ser pior que qualquer cenário mostrado.</p>
+      <div class="grafico" id="g-mc"></div><div class="grade-num" id="sim-mc"></div></article>
+    <article class="vidro"><h2 class="tit">💼 Minha carteira fictícia <span class="selo-sim">dinheiro fictício</span></h2><div id="sim-carteira"></div><div class="grafico baixo" id="g-cart"></div></article>
+    <article class="vidro"><h2 class="tit">🎯 Registro de acertos <span class="selo-sim">SIMULAÇÃO</span></h2>
+      <p class="nota">Cada análise fica gravada neste aparelho. Depois, a Águia confere se os ativos que ela pontuou bem realmente ganharam do CDI. Assim você mede se a lógica funciona antes de pensar em qualquer coisa real.</p>
+      <div id="sim-acertos"></div><div class="cta"><button class="btn" id="sim-limpar">Apagar histórico deste aparelho</button></div></article>
+  </div>
+</section>
+
+<!-- ============ CURTO PRAZO E PRAZOS ============ -->
+<section class="pagina" data-pagina="curto" aria-labelledby="t-curto" hidden>
+  <div class="banner-sim" role="note"><b>MODO SIMULAÇÃO — dinheiro fictício</b><span>Não é recomendação de investimento. Nenhuma opção aqui é livre de risco. Por sua conta e risco.</span></div>
+  <div class="cab-pag"><p class="sobre">TRADE COM OS PÉS NO CHÃO</p><h1 id="t-curto">Curto prazo e <span class="ouro">prazos</span></h1>
+  <div class="responsa" role="note"><b>Qualquer decisão de investimento é de total responsabilidade e por conta e risco de cada pessoa. O aplicativo e seus criadores não se responsabilizam por perdas.</b> Este app não recebe nem movimenta dinheiro.</div>
+  <p class="lead">Quer resultado rápido? Veja as opções com honestidade: cada uma tem um nível de risco. E descubra, com dados do passado, <b>quanto tempo o dinheiro precisaria ficar</b> para atingir uma meta.</p></div>
+  <div id="curto-bloqueio" class="vidro bloqueio" hidden><p>Para ver esta área, leia e aceite os avisos de risco.</p><button class="btn ouro-btn" data-abrir-aviso>Ler avisos</button></div>
+  <div id="curto-corpo" hidden>
+  <article class="vidro"><h2 class="tit">⏱ Opções de curto prazo, com nível de risco</h2>
+    <div class="opcoes" id="curto-opcoes"></div>
+    <div class="estudo"><b>📚 O que dizem os dados sobre day trade no Brasil</b>
+      <p>Pesquisadores da FGV analisaram, com dados fornecidos pela CVM, todas as pessoas que começaram a fazer day trade no mini-índice entre 2013 e 2015 (19.646 pessoas). Das 1.551 que insistiram por mais de 300 pregões, <b>97% perderam dinheiro</b> e só <b>1,1% ganharam mais que um salário mínimo</b>. Em ações, de 98.378 iniciantes (2013–2016), só <b>127</b> tiveram lucro bruto médio acima de R$ 100 por dia ao longo de mais de 300 pregões.</p>
+      <p class="nota">Fontes: Chague, De-Losso e Giovannetti, <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3423101" target="_blank" rel="noopener noreferrer">"Day Trading for a Living?" (SSRN)</a>; <a href="https://periodicos.fgv.br/rbfin/article/download/81949/78263/176074" target="_blank" rel="noopener noreferrer">"É possível viver de day-trade em ações?" (Revista Brasileira de Finanças, FGV)</a>.</p></div>
+  </article>
+  <article class="vidro"><h2 class="tit">🎯 Quanto tempo até a meta? <span class="selo-sim">SIMULAÇÃO · dados históricos</span></h2>
+    <p class="nota">Para cada dia do passado, a Águia simula "se eu tivesse entrado aqui": quantos dias levou para o preço subir a meta, e qual foi a queda que precisou aguentar no caminho. Passado não garante futuro.</p>
+    <div class="filtros"><label class="rot">Meta de ganho<select id="pz-meta"><option value="0.05">+5%</option><option value="0.1" selected>+10%</option><option value="0.2">+20%</option><option value="0.5">+50%</option></select></label></div>
+    <div class="tabela-rol"><table class="tab" id="pz-tab"></table></div>
+    <h3 class="sub">Chance de já ter atingido a meta, dia a dia</h3>
+    <div class="grafico" id="g-pz"></div><div class="legenda" id="leg-pz"></div>
+  </article>
+  <article class="vidro"><h2 class="tit">🚪 Pontos de entrada e saída (regra simulada) <span class="selo-sim">SIMULAÇÃO</span></h2>
+    <p class="nota">Regra educativa: <b>entra</b> quando o preço cruza para cima da média de 50 dias; <b>sai</b> ao bater a meta (stop-gain), ao perder o limite (stop-loss) ou se cair abaixo da média. Mostra como regras de saída protegem e também como podem falhar.</p>
+    <div class="filtros">
+      <label class="rot">Ativo<select id="es-ativo"></select></label>
+      <label class="rot">Stop-gain (meta)<select id="es-meta"><option value="0.05">+5%</option><option value="0.08">+8%</option><option value="0.1" selected>+10%</option><option value="0.2">+20%</option></select></label>
+      <label class="rot">Stop-loss<select id="es-stop"><option value="0.03">−3%</option><option value="0.05" selected>−5%</option><option value="0.08">−8%</option><option value="0.12">−12%</option></select></label>
+    </div>
+    <div class="grafico" id="g-es"></div><div class="legenda"><span><i class="lg-ent"></i>▲ entrada</span><span><i class="lg-meta"></i>● saída na meta</span><span><i class="lg-stop"></i>● saída no stop / média</span></div>
+    <div class="grade-num" id="es-num"></div>
+    <div class="tabela-rol"><table class="tab" id="es-ops"></table></div>
+  </article>
+  </div>
+</section>
+
+<!-- ============ O QUE OS RICOS USAM ============ -->
+<section class="pagina texto" data-pagina="riqueza" aria-labelledby="t-riq" hidden>
+  <div class="cab-pag"><p class="sobre">FERRAMENTAS DE QUEM CONSTRÓI PATRIMÔNIO</p><h1 id="t-riq">O que os <span class="ouro">ricos</span> usam</h1>
+  <p class="lead">Não existe segredo mágico: patrimônio grande costuma vir de <b>tempo, disciplina, diversificação e impostos bem planejados</b>. Veja as ferramentas, explicadas sem enrolação, e faça as contas.</p></div>
+  <div class="cartoes" id="riq-cartoes"></div>
+  <article class="vidro"><h2 class="tit">📈 Calculadora de juros compostos <span class="selo-sim">SIMULAÇÃO</span></h2>
+    <form class="form-calc" id="calc-jc">
+      <label>Valor inicial (R$)<input type="number" id="jc-ini" value="1000" min="0" step="100" inputmode="decimal"></label>
+      <label>Aporte mensal (R$)<input type="number" id="jc-mes" value="300" min="0" step="50" inputmode="decimal"></label>
+      <label>Taxa ao ano (%)<input type="number" id="jc-taxa" value="10" min="0" max="100" step="0.5" inputmode="decimal"></label>
+      <label>Anos<input type="number" id="jc-anos" value="20" min="1" max="60" step="1" inputmode="numeric"></label>
+    </form>
+    <div class="grade-num" id="jc-num"></div><div class="grafico baixo" id="g-jc"></div>
+    <p class="nota">Taxa fixa é uma simplificação: na vida real o rendimento varia, há impostos, taxas e inflação. Sugestão: use uma taxa "real" (acima da inflação) para ver o poder de compra.</p></article>
+  <div class="duas">
+  <article class="vidro"><h2 class="tit">🛟 Reserva de emergência</h2>
+    <form class="form-calc" id="calc-res"><label>Gasto mensal (R$)<input type="number" id="res-gasto" value="3000" min="0" step="100" inputmode="decimal"></label>
+    <label>Sua renda é<select id="res-tipo"><option value="6">Estável (CLT/servidor): 6 meses</option><option value="9" selected>Variável: 9 meses</option><option value="12">Autônomo/empresário: 12 meses</option></select></label></form>
+    <div class="grade-num" id="res-num"></div><p class="nota">Onde costuma ficar: aplicações de baixo risco e liquidez diária (Tesouro Selic, CDB de liquidez diária de banco grande coberto pelo FGC). Ainda assim, há riscos.</p></article>
+  <article class="vidro"><h2 class="tit">🏁 Metas</h2>
+    <form class="form-calc" id="calc-meta"><label>Quero juntar (R$)<input type="number" id="mt-valor" value="50000" min="0" step="1000" inputmode="decimal"></label>
+    <label>Em (meses)<input type="number" id="mt-meses" value="36" min="1" max="600" step="1" inputmode="numeric"></label>
+    <label>Rendimento ao ano (%)<input type="number" id="mt-taxa" value="9" min="0" max="50" step="0.5" inputmode="decimal"></label></form>
+    <div class="grade-num" id="mt-num"></div></article>
+  </div>
+  <article class="vidro"><h2 class="tit">🧾 Orçamento 50/30/20</h2>
+    <form class="form-calc" id="calc-orc"><label>Renda líquida mensal (R$)<input type="number" id="orc-renda" value="5000" min="0" step="100" inputmode="decimal"></label></form>
+    <div class="grade-num" id="orc-num"></div><p class="nota">Uma regra simples para começar: 50% necessidades, 30% desejos, 20% para o futuro (reserva, metas, investimentos). Ajuste à sua realidade.</p></article>
+</section>
+
+<!-- ============ INTELIGÊNCIA EMOCIONAL ============ -->
+<section class="pagina texto" data-pagina="mente" aria-labelledby="t-mente" hidden>
+  <div class="cab-pag"><p class="sobre">A MENTE DA ÁGUIA</p><h1 id="t-mente">Inteligência <span class="ouro">emocional</span></h1>
+  <p class="lead">No mercado, quem não controla as emoções é controlado por elas. A águia espera, observa e só desce quando é a hora. <b>Saber dizer "chega" vale mais que qualquer indicador.</b></p></div>
+  <article class="vidro pausa"><h2 class="tit">🫁 Pausa consciente — respire 60 segundos</h2>
+    <p class="nota">Antes de qualquer decisão por impulso (comprar porque "todo mundo está ganhando", vender em pânico, tentar recuperar uma perda), faça a pausa.</p>
+    <div class="respira" id="respira" aria-live="polite"><div class="circulo" id="circulo"><span id="resp-txt">Toque em iniciar</span><b id="resp-seg">60</b></div></div>
+    <div class="cta"><button class="btn ouro-btn" id="resp-ini">Iniciar pausa</button><button class="btn" id="resp-parar">Parar</button></div>
+    <p id="resp-fim" class="responsa" hidden>Pausa concluída. Pergunte-se: <b>"Eu faria essa operação se tivesse perdido nada hoje? Ela está no meu plano?"</b> Se a resposta for não, a decisão mais forte é não fazer.</p>
+  </article>
+  <article class="vidro"><h2 class="tit">🛑 Regras de proteção (defina ANTES de operar)</h2><ul class="lista-check">
+    <li><b>Stop-loss:</b> o ponto em que você aceita a perda e sai. Defina antes de entrar, nunca "depois eu vejo".</li>
+    <li><b>Stop-gain:</b> o ponto em que você realiza o lucro. Ganância transforma lucro em prejuízo.</li>
+    <li><b>Limite de perda diário:</b> bateu o limite, acabou o dia. Sem "só mais uma para recuperar".</li>
+    <li><b>Tamanho da posição:</b> arrisque no máximo uma fração pequena do seu capital em cada operação (muitos profissionais usam 1% a 2%).</li>
+    <li><b>Nunca use dinheiro da reserva de emergência</b>, de contas ou emprestado.</li>
+    <li><b>Diário de trade:</b> anote por que entrou, como se sentiu e o resultado. Padrões emocionais aparecem no papel.</li>
+  </ul></article>
+  <article class="vidro"><h2 class="tit">📏 Meu limite de perda diário <span class="selo-sim">fica só neste aparelho</span></h2>
+    <form class="form-calc" id="calc-lim"><label>Capital destinado (R$, fictício)<input type="number" id="lim-cap" value="10000" min="0" step="100" inputmode="decimal"></label>
+    <label>Limite diário (%)<select id="lim-pct"><option value="0.01">1%</option><option value="0.02" selected>2%</option><option value="0.03">3%</option></select></label>
+    <label>Perda de hoje (R$)<input type="number" id="lim-hoje" value="0" min="0" step="10" inputmode="decimal"></label></form>
+    <div id="lim-res"></div></article>
+  <article class="vidro"><h2 class="tit">🧠 Armadilhas da mente</h2><dl class="riscos">
+    <dt>FOMO (medo de ficar de fora)</dt><dd>Comprar porque "subiu muito" ou "todo mundo está ganhando". Geralmente é quando o risco está mais alto.</dd>
+    <dt>Ganância</dt><dd>Não realizar lucro esperando "só mais um pouco", ou aumentar a aposta depois de ganhar.</dd>
+    <dt>Medo e pânico</dt><dd>Vender tudo numa queda forte e perder a recuperação.</dd>
+    <dt>Aversão à perda</dt><dd>Segurar uma perda por orgulho, esperando "voltar ao preço que paguei".</dd>
+    <dt>Vingança contra o mercado</dt><dd>Operar para recuperar uma perda. É o caminho mais rápido para perder mais.</dd>
+    <dt>Excesso de confiança</dt><dd>Depois de algumas vitórias, achar que descobriu o segredo e arriscar demais.</dd>
+  </dl></article>
+  <article class="vidro"><h2 class="tit">✅ Checklist antes de qualquer operação</h2><div id="mente-check" class="checklist"></div><div id="mente-check-res"></div></article>
+  <article class="vidro"><h2 class="tit">🪞 Autoavaliação (quiz)</h2><form id="quiz" class="quiz"></form><div id="quiz-res"></div></article>
+</section>
+
+<!-- ============ DETECTOR DE GOLPES ============ -->
+<section class="pagina texto" data-pagina="fraude" aria-labelledby="t-fraude" hidden>
+  <div class="cab-pag"><p class="sobre aviso-cor">OLHO DE ÁGUIA CONTRA GOLPES</p><h1 id="t-fraude">Detector de risco e <span class="ouro">fraude</span></h1>
+  <p class="lead">Recebeu uma "oportunidade" no WhatsApp, Instagram ou Telegram? Cole o texto abaixo. A Águia procura sinais clássicos de golpe. Nenhum detector é perfeito: na dúvida, <b>não invista</b> e consulte a CVM.</p></div>
+  <article class="vidro"><h2 class="tit">🔍 Analisar uma oferta</h2>
+    <textarea id="fr-texto" rows="6" maxlength="5000" placeholder="Cole aqui a mensagem da oferta (ex.: 'Rendimento de 5% ao dia garantido, só hoje, indique amigos e ganhe bônus…')" aria-label="Texto da oferta"></textarea>
+    <div class="checklist" id="fr-perg"></div>
+    <div class="cta"><button class="btn ouro-btn" id="fr-analisar">Analisar</button></div>
+    <div id="fr-res"></div></article>
+  <article class="vidro"><h2 class="tit">🚩 Os sinais que a Águia procura</h2><ul class="lista-check alerta">
+    <li><b>Retorno alto prometido ou "garantido"</b> (ex.: 1% ao dia, 20% ao mês). Investimento real não garante ganho alto.</li>
+    <li><b>Sem registro na CVM ou no Banco Central.</b> Confira sempre nos sites oficiais.</li>
+    <li><b>Pressão e urgência:</b> "só hoje", "últimas vagas", "decida agora".</li>
+    <li><b>Ganho por indicação:</b> você ganha trazendo outras pessoas. Isso é característica de pirâmide.</li>
+    <li><b>Plataformas de cripto sem autorização</b>, "robôs de arbitragem", "trader que opera por você".</li>
+    <li><b>Pedido de Pix para pessoa física</b>, de senhas, códigos ou frases-semente.</li>
+  </ul>
+  <div class="cta"><a class="btn" href="https://www.gov.br/cvm/pt-br/assuntos/protecao/alertas" target="_blank" rel="noopener noreferrer">Alertas da CVM ↗</a><a class="btn" href="https://www.gov.br/cvm/pt-br/assuntos/regulados/consultas-por-participante" target="_blank" rel="noopener noreferrer">Consultar quem é autorizado (CVM) ↗</a><a class="btn" href="https://www.bcb.gov.br/estabilidadefinanceira/encontreinstituicao" target="_blank" rel="noopener noreferrer">Encontre uma instituição (Banco Central) ↗</a></div></article>
+</section>
+
+<!-- ============ ONDE INVESTIR COM SEGURANÇA ============ -->
+<section class="pagina texto" data-pagina="plataformas" aria-labelledby="t-plat" hidden>
+  <div class="cab-pag"><p class="sobre">SÓ O QUE É REGULADO</p><h1 id="t-plat">Onde investir com <span class="ouro">segurança</span></h1>
+  <p class="lead">Aqui só aparecem caminhos <b>regulados no Brasil</b>. Estar na lista <b>não é recomendação</b> e não elimina riscos: confira sempre nos sites oficiais antes de abrir conta.</p></div>
+  <div class="cartoes" id="plat-tipos"></div>
+  <article class="vidro"><h2 class="tit">🏛 Corretoras e distribuidoras com registro ativo na CVM <span class="etq" id="plat-atual"></span></h2>
+    <p class="nota">Situação lida automaticamente do <a href="https://dados.cvm.gov.br/dataset/intermed-cad" target="_blank" rel="noopener noreferrer">Cadastro de Intermediários (Dados Abertos da CVM)</a>, atualizado pelo robô do app. Lista curta e em ordem alfabética, sem ordem de preferência.</p>
+    <div class="tabela-rol"><table class="tab" id="plat-tab"></table></div>
+    <div class="cta"><a class="btn" href="https://www.b3.com.br/pt_br/produtos-e-servicos/participantes/busca-de-participantes/busca-de-corretoras/" target="_blank" rel="noopener noreferrer">Busca de corretoras (B3) ↗</a><a class="btn" href="https://www.bcb.gov.br/estabilidadefinanceira/encontreinstituicao" target="_blank" rel="noopener noreferrer">Banco Central ↗</a><a class="btn" href="https://www.gov.br/cvm/pt-br/assuntos/regulados/consultas-por-participante" target="_blank" rel="noopener noreferrer">CVM ↗</a></div></article>
+</section>
+
+<!-- ============ SEGURANÇA ============ -->
+<section class="pagina texto" data-pagina="seguranca" aria-labelledby="t-seg" hidden>
+  <div class="cab-pag"><p class="sobre">BLINDAGEM</p><h1 id="t-seg">Segurança</h1><p class="lead">O que protege você neste app e o que seria obrigatório antes de qualquer uso com dinheiro de verdade.</p></div>
+  <article class="vidro"><h2 class="tit">🛡 O que já protege você aqui</h2><ul class="lista-check">
+    <li><b>Nenhum dinheiro real, nenhuma corretora, nenhuma senha.</b> O app não pede login, cartão, chave de API nem dados bancários. Não há o que roubar.</li>
+    <li><b>Política de Segurança de Conteúdo (CSP) rígida:</b> o navegador só executa scripts do próprio site e só conversa com as fontes de dados listadas. Scripts injetados por terceiros são bloqueados.</li>
+    <li><b>Sem scripts de terceiros por CDN:</b> as bibliotecas (DOMPurify, Fuse.js, Lightweight Charts) ficam hospedadas no próprio site, com versão fixa e verificadas por hash SHA-384 no repositório.</li>
+    <li><b>Textos externos higienizados:</b> manchetes e descrições vindas de fora são inseridas como texto puro ou passam pelo DOMPurify. Links só abrem se forem https e em nova aba sem acesso à página (noopener).</li>
+    <li><b>HTTPS sempre</b> (GitHub Pages) e <b>upgrade-insecure-requests</b>.</li>
+    <li><b>Seus dados ficam no seu aparelho:</b> carteira fictícia e histórico são salvos só no armazenamento local do navegador. Nada é enviado para servidor.</li>
+    <li><b>Vídeos só carregam quando você toca</b>, pelo domínio de privacidade reforçada do YouTube.</li>
+    <li><b>Repositório vigiado:</b> Dependabot (atualizações de segurança) e CodeQL (análise de código) rodam automaticamente no GitHub.</li>
+  </ul></article>
+  <article class="vidro"><h2 class="tit">🔐 O que seria obrigatório antes de usar dinheiro real</h2><ul class="lista-check alerta">
+    <li><b>Usar só corretoras autorizadas pela CVM e pelo Banco Central</b>, com login oficial (OAuth) da própria corretora: o app nunca deveria ver sua senha.</li>
+    <li><b>Autenticação em dois fatores (2FA)</b> com aplicativo autenticador ou chave física, nunca só SMS.</li>
+    <li><b>Servidor próprio protegido</b> (não um site estático) para guardar tokens criptografados, com limites de valor, lista de ativos permitidos e confirmação humana para cada ordem.</li>
+    <li><b>Auditoria de segurança independente</b>, registros de todas as operações e plano de resposta a incidentes.</li>
+    <li><b>Cumprir as regras da CVM</b>: recomendar investimentos a terceiros exige profissional/empresa registrada (analista CNPI, consultor CVM).</li>
+  </ul></article>
+  <article class="vidro"><h2 class="tit">🚫 Proteja-se de golpes</h2><ul class="lista-check alerta">
+    <li>Ninguém sério promete <b>lucro garantido</b> ou <b>ganho exponencial</b>. Isso é sinal clássico de pirâmide e golpe.</li>
+    <li><b>Nunca</b> compartilhe senhas, códigos de verificação, frases-semente (seed phrase) ou chaves privadas de carteiras cripto, nem com "suporte".</li>
+    <li>Desconfie de "robôs de investimento" que pedem depósito via Pix para uma pessoa física.</li>
+    <li>Confira se a empresa é autorizada no site da CVM antes de investir.</li>
+  </ul><p><a class="btn" href="https://www.gov.br/cvm/pt-br" target="_blank" rel="noopener noreferrer">Site oficial da CVM ↗</a></p></article>
+</section>
+
+<!-- ============ AVISOS E RISCOS ============ -->
+<section class="pagina texto" data-pagina="riscos" aria-labelledby="t-risco" hidden>
+  <div class="cab-pag"><p class="sobre aviso-cor">LEIA COM ATENÇÃO</p><h1 id="t-risco">⚠ Avisos e Riscos</h1></div>
+  <div class="responsa" role="note"><b>Qualquer decisão de investimento é de total responsabilidade e por conta e risco de cada pessoa. O aplicativo e seus criadores não se responsabilizam por perdas.</b></div>
+  <article class="vidro"><h2 class="tit">O que este app é (e o que não é)</h2><ul class="lista-check alerta">
+    <li>É uma ferramenta <b>educativa e de simulação</b>. O simulador usa <b>dinheiro fictício</b>.</li>
+    <li><b>Não é recomendação de investimento</b>, não é consultoria e não substitui um profissional.</li>
+    <li><b>Não há garantia de retorno.</b> Não existe ganho exponencial garantido.</li>
+    <li>Resultados passados (inclusive do backtest) <b>não garantem resultados futuros</b>.</li>
+    <li>A "IA" do simulador é um conjunto de fórmulas estatísticas. <b>Modelos erram</b>, e erram mais em crises.</li>
+    <li>Os dados podem estar <b>atrasados, incompletos ou errados</b> (fontes gratuitas; ações atualizam a cada poucas horas).</li>
+  </ul></article>
+  <article class="vidro"><h2 class="tit">Tipos de risco, em linguagem simples</h2><dl class="riscos">
+    <dt>📉 Risco de mercado</dt><dd>O preço sobe e desce todo dia. Você pode vender por menos do que pagou.</dd>
+    <dt>💥 Perda total</dt><dd>Em ações, cripto e derivativos é possível <b>perder todo o capital investido</b>. Com alavancagem, até mais do que investiu.</dd>
+    <dt>🎢 Volatilidade</dt><dd>Criptomoedas podem cair 30% a 80% em semanas; ações podem cair 50% numa crise.</dd>
+    <dt>🏦 Risco de crédito</dt><dd>Quem recebeu seu dinheiro (banco, empresa, governo) pode não pagar. O FGC protege só alguns produtos e até certo limite.</dd>
+    <dt>💧 Liquidez</dt><dd>Às vezes não há comprador na hora em que você precisa vender.</dd>
+    <dt>💱 Câmbio</dt><dd>Ativos em dólar ganham ou perdem com a variação da moeda.</dd>
+    <dt>🤖 Risco de modelo</dt><dd>Indicadores e IAs olham o passado. Eventos novos (guerras, pandemias, fraudes) quebram qualquer modelo.</dd>
+    <dt>🕵 Golpes e fraudes</dt><dd>Promessas de lucro garantido, "robôs milagrosos", pirâmides e falsos suportes pedindo senha ou seed phrase. <b>Nunca compartilhe senhas ou frases-semente.</b></dd>
+    <dt>🔓 Risco digital</dt><dd>Contas sem 2FA, celulares sem atualização e links falsos podem levar ao roubo do seu dinheiro.</dd>
+  </dl></article>
+  <article class="vidro"><h2 class="tit">Quem regula no Brasil</h2>
+    <p>A <b>CVM (Comissão de Valores Mobiliários)</b> fiscaliza o mercado de capitais: corretoras, fundos, ofertas, analistas e consultores. O <b>Banco Central</b> regula bancos, instituições de pagamento e o câmbio. Recomendar investimentos de forma personalizada exige registro (consultor de valores mobiliários autorizado pela CVM, analista CNPI). Planejadores com certificação <b>CFP</b> e especialistas <b>CEA</b> (ANBIMA) também podem orientar.</p>
+    <p><b>Antes de investir dinheiro real, consulte um profissional certificado</b> e confira se a instituição é autorizada.</p>
+    <div class="cta"><a class="btn" href="https://www.gov.br/cvm/pt-br" target="_blank" rel="noopener noreferrer">CVM ↗</a><a class="btn" href="https://www.investidor.gov.br/" target="_blank" rel="noopener noreferrer">Portal do Investidor ↗</a><a class="btn" href="https://www.bcb.gov.br/" target="_blank" rel="noopener noreferrer">Banco Central ↗</a></div>
+  </article>
+  <div class="cta"><button class="btn" id="rever-aviso">Rever o aviso do simulador</button></div>
+</section>
+</main>
+
+<footer class="rodape">
+  <p class="responsa-mini"><b>⚠ Aviso:</b> conteúdo educativo. O simulador usa <b>dinheiro fictício</b> e <b>não é recomendação de investimento</b>. Não há garantia de retorno; resultados passados não garantem resultados futuros; é possível perder todo o capital. O app não recebe nem movimenta dinheiro. <b>Qualquer decisão de investimento é de total responsabilidade e por conta e risco de cada pessoa. O aplicativo e seus criadores não se responsabilizam por perdas.</b> <a href="#riscos">Avisos e Riscos</a></p>
+  <p class="fontes">Dados: Hugging Face, GitHub, NVIDIA (blog, newsroom, API Catalog), Banco Central (SGS), AwesomeAPI, CoinGecko, Yahoo Finance/Stooq e feeds RSS públicos. Marcas pertencem aos seus donos; app independente, sem ligação com a NVIDIA. <span id="rod-atual"></span></p>
+</footer>
+
+<nav class="nav-baixo" aria-label="Menu">
+  <a href="#inicio"><span>☀</span>Início</a><a href="#nvidia"><span>◈</span>IA NVIDIA</a><a href="#mundo"><span>◉</span>Mundo</a><a href="#simulador"><span>⟁</span>Simulador</a><a href="#riscos" class="lk-risco"><span>⚠</span>Riscos</a><button type="button" id="btn-mais" aria-haspopup="dialog"><span>☰</span>Mais</button>
+</nav>
+<dialog id="menu-mais" aria-label="Mais seções"><nav class="menu-mais"><a href="#curto">⏱ Curto prazo e prazos</a><a href="#riqueza">💎 O que os ricos usam</a><a href="#mente">🧠 Inteligência emocional</a><a href="#fraude">🚩 Detector de golpes</a><a href="#plataformas">🏛 Onde investir com segurança</a><a href="#seguranca">🛡 Segurança</a><a href="#riscos" class="lk-risco">⚠ Avisos e Riscos</a><button type="button" class="btn" id="fechar-mais">Fechar</button></nav></dialog>
+
+<dialog id="aviso" aria-labelledby="aviso-t">
+  <form method="dialog" class="aviso-caixa" id="aviso-form">
+    <div class="banner-sim"><b>MODO SIMULAÇÃO — dinheiro fictício</b></div>
+    <h2 id="aviso-t">⚠ Antes de entrar na área de investimentos</h2>
+    <div class="aviso-rol">
+    <p class="responsa"><b>Qualquer decisão de investimento é de total responsabilidade e por conta e risco de cada pessoa. O aplicativo e seus criadores não se responsabilizam por perdas.</b></p>
+    <ul>
+      <li>Isto é <b>educativo e uma simulação</b>, com <b>dinheiro fictício</b>. Nenhuma corretora ou conta real está conectada.</li>
+      <li><b>Não é recomendação de investimento</b> nem consultoria financeira.</li>
+      <li>Resultados passados <b>não garantem resultados futuros</b>.</li>
+      <li>Investir pode levar à <b>perda de todo o capital investido</b>.</li>
+      <li>Ações e principalmente <b>criptomoedas são muito voláteis</b>: podem cair muito em pouco tempo.</li>
+      <li>A IA/modelo <b>pode errar</b>. Ela só segue fórmulas sobre o passado.</li>
+      <li>Os dados podem estar <b>atrasados ou incorretos</b>.</li>
+      <li><b>Não existe garantia de ganhos exponenciais.</b></li>
+      <li>Cuidado com <b>golpes</b> que prometem retorno garantido.</li>
+      <li><b>Nunca compartilhe senhas, códigos ou frases-semente (seed phrase)</b> de carteiras.</li>
+      <li>Este app <b>não recebe, não guarda e não movimenta dinheiro</b>, e não pede dados bancários.</li>
+      <li>Antes de investir dinheiro real, consulte um <b>profissional certificado</b> (consultor registrado na CVM, CEA ou CFP).</li>
+    </ul>
+    </div>
+    <label class="chk grande"><input type="checkbox" id="aviso-ok" required> <span><b>Entendi os riscos</b> e sei que é só uma simulação, por minha conta e risco.</span></label>
+    <div class="cta"><button class="btn" value="cancelar" id="aviso-sair" formnovalidate>Voltar</button><button class="btn ouro-btn" value="aceito" id="aviso-aceito" disabled>Entrar (modo simulação)</button></div>
+  </form>
+</dialog>
+<noscript><p class="noscript">Este app precisa de JavaScript para mostrar os dados ao vivo.</p></noscript>
+</body>
+</html>

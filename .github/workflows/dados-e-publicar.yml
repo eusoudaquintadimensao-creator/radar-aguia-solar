@@ -1,0 +1,60 @@
+name: Dados ao vivo e publicação
+
+on:
+  schedule:
+    - cron: "17 */3 * * *"   # a cada 3 horas
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: dados-e-publicar
+  cancel-in-progress: false
+
+jobs:
+  dados:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Verificar integridade das bibliotecas (SHA-384)
+        run: cd vendor && sha384sum -c SHA384SUMS
+      - name: Coletar dados (NVIDIA, notícias, mercados, CVM)
+        run: node scripts/fetch-data.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Testar motor do simulador
+        run: node scripts/test-engine.mjs
+      - name: Gravar dados no repositório
+        run: |
+          git config user.name "radar-aguia-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then echo "sem mudanças"; else git commit -m "dados: atualização automática $(date -u +%Y-%m-%dT%H:%MZ)" && git pull --rebase -X ours origin main && git push; fi
+      - name: Montar site
+        run: |
+          mkdir _site
+          rsync -a --exclude '.git' --exclude '.github' --exclude 'node_modules' --exclude '_site' --exclude 'scripts' --exclude 'package*.json' ./ _site/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  publicar:
+    needs: dados
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4
