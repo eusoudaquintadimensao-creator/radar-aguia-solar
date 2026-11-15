@@ -2,7 +2,7 @@
 // Fontes públicas e gratuitas. Nenhuma chave secreta é exposta no site.
 import { XMLParser } from 'fast-xml-parser';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
-import { execFileSync } from 'node:child_process';
+import { inflateRawSync } from 'node:zlib';
 import { sentimento } from '../js/sentiment.js';
 
 const UA = 'Mozilla/5.0 (compatible; RadarAguiaSolar/1.0; +https://github.com/eusoudaquintadimensao-creator/radar-aguia-solar)';
@@ -14,7 +14,7 @@ const erros = [];
 async function get(url, { tipo = 'json', headers = {}, tentativas = 2, timeout = 20000 } = {}) {
   for (let i = 0; i <= tentativas; i++) {
     try {
-      const r = await fetch(url, { headers: { 'User-Agent': UA, Accept: tipo === 'json' ? 'application/json' : '*/*', ...headers }, redirect: 'follow', signal: AbortSignal.timeout(timeout) });
+      const r = await fetch(url, { cache: 'no-store', headers: { 'User-Agent': UA, Accept: tipo === 'json' ? 'application/json' : '*/*', ...headers }, redirect: 'follow', signal: AbortSignal.timeout(timeout) });
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
       return tipo === 'json' ? await r.json() : await r.text();
     } catch (e) {
@@ -23,7 +23,7 @@ async function get(url, { tipo = 'json', headers = {}, tentativas = 2, timeout =
     }
   }
 }
-const limpa = s => String(s ?? '').replace(/<[^>]*>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#0?39;|&apos;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n)).replace(/\s+/g, ' ').trim();
+const limpa = s => String(s ?? '').replace(/<[^>]*>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&quot;/g, '"').replace(/&#0?39;|&apos;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#(\d+);/g, (_, n) => { const c = +n; return c > 31 && c < 0x10ffff ? String.fromCodePoint(c) : ' '; }).replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
 const corta = (s, n) => (s.length > n ? s.slice(0, n - 1).trimEnd() + '…' : s);
 const soHttp = u => (/^https?:\/\//i.test(String(u || '')) ? String(u).trim() : '');
 const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@', textNodeName: '#t', processEntities: true, htmlEntities: true });
@@ -203,7 +203,8 @@ async function mercados() {
   const f = d => `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}/${d.getFullYear()}`;
   const sgs = async (n, q) => get(q ? `https://api.bcb.gov.br/dados/serie/bcdata.sgs.${n}/dados/ultimos/${q}?formato=json` : `https://api.bcb.gov.br/dados/serie/bcdata.sgs.${n}/dados?formato=json&dataInicial=${f(ini)}&dataFinal=${f(fim)}`);
   const br = d => { const [dd, mm, aa] = d.split('/'); return `${aa}-${mm}-${dd}`; };
-  const cdiRaw = await sgs(12), selic = await sgs(432, 1), ipca12 = await sgs(13522, 1);
+  const cdiRaw = await sgs(12), selic = await sgs(432, 1), ipcaMes = await sgs(433, 12);
+  const ipca12 = ipcaMes?.length === 12 ? [{ valor: ((ipcaMes.reduce((f, x) => f * (1 + (+x.valor) / 100), 1) - 1) * 100).toFixed(2) }] : null;
   const cdi = cdiRaw?.map(x => [br(x.data), +x.valor]) ?? ant?.cdi ?? [];
   for (const a of Object.values(ativos)) delete a.nat;
   const out = { atualizado: agora, ativos, cdi, selic: selic?.[0] ? +selic[0].valor : ant?.selic ?? null, ipca12m: ipca12?.[0] ? +ipca12[0].valor : ant?.ipca12m ?? null };
@@ -226,14 +227,26 @@ const REGULADAS = [
   { cnpj: '12.392.983/0001-38', nome: 'Mirae Asset', site: 'https://www.mirae.com.br/' },
   { cnpj: '61.384.004/0001-05', nome: 'Avenue (banco de investimento no Brasil)', site: 'https://avenue.us/' }
 ];
+// Lê um arquivo de dentro de um ZIP em memória (sem gravar arquivo temporário)
+function lerZip(buf, nome) {
+  let eocd = buf.length - 22; while (eocd >= 0 && buf.readUInt32LE(eocd) !== 0x06054b50) eocd--;
+  if (eocd < 0) throw new Error('ZIP inválido');
+  let p = buf.readUInt32LE(eocd + 16); const n = buf.readUInt16LE(eocd + 10);
+  for (let i = 0; i < n; i++) {
+    const metodo = buf.readUInt16LE(p + 10), tam = buf.readUInt32LE(p + 20), ln = buf.readUInt16LE(p + 28), le = buf.readUInt16LE(p + 30), lc = buf.readUInt16LE(p + 32), off = buf.readUInt32LE(p + 42);
+    const nm = buf.toString('utf8', p + 46, p + 46 + ln);
+    if (nm === nome) { const ini = off + 30 + buf.readUInt16LE(off + 26) + buf.readUInt16LE(off + 28); const dados = buf.subarray(ini, ini + tam); return metodo === 8 ? inflateRawSync(dados) : dados; }
+    p += 46 + ln + le + lc;
+  }
+  throw new Error('arquivo não encontrado no ZIP');
+}
 async function reguladas() {
   const ant = await anterior('reguladas.json');
   const fonte = 'https://dados.cvm.gov.br/dados/INTERMED/CAD/DADOS/cad_intermed.zip';
   try {
     const r = await fetch(fonte, { headers: { 'User-Agent': UA }, signal: AbortSignal.timeout(60000) });
     if (!r.ok) throw new Error('HTTP ' + r.status);
-    await writeFile('/tmp/cad_intermed.zip', Buffer.from(await r.arrayBuffer()));
-    const csv = new TextDecoder('latin1').decode(execFileSync('unzip', ['-p', '/tmp/cad_intermed.zip', 'cad_intermed.csv'], { maxBuffer: 64 << 20 }));
+    const csv = new TextDecoder('latin1').decode(lerZip(Buffer.from(await r.arrayBuffer()), 'cad_intermed.csv'));
     const linhas = csv.split(/\r?\n/).map(l => l.split(';'));
     const cab = linhas[0]; const ix = n => cab.indexOf(n);
     const itens = REGULADAS.map(x => {

@@ -15,7 +15,7 @@ export function h(tag, attrs = {}, ...filhos) {
   return el;
 }
 // Remove qualquer marcação de textos vindos de fora (manchetes, descrições)
-export const limpo = s => DOMPurify.sanitize(String(s ?? ''), { ALLOWED_TAGS: [], ALLOWED_ATTR: [] }).replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").trim();
+export const limpo = s => DOMPurify.sanitize(String(s ?? ''), { ALLOWED_TAGS: [], ALLOWED_ATTR: [] }).replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, '&').trim();
 export function linkSeguro(u) {
   const s = String(u || '').trim();
   if (s.startsWith('#')) return s;
