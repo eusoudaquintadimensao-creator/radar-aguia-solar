@@ -1,1 +1,1 @@
-{"atualizado":"2026-11-23T01:40:18.775Z","segundos":15,"erros":[],"contagem":{"hf":214,"github":247,"releases":45,"nim":33,"feeds":"15/15","ativos":15,"cdi":519,"reguladas":12}}
+{"atualizado":"2026-11-23T12:29:02.782Z","segundos":14,"erros":["https://api.bcb.gov.br/dados/serie/bcdata.sgs.433/dados/ultimos/12?formato=json: HTTP 304"],"contagem":{"hf":214,"github":249,"releases":45,"nim":32,"feeds":"15/15","ativos":15,"cdi":519,"reguladas":12}}
